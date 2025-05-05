@@ -33,5 +33,5 @@ jobs:
         run: test -z $(go fmt ./...)
       - name: Run staticcheck
         run: staticcheck ./...
-      - name: Run gosec
+      - name: gosec
         run: gosec ./...
