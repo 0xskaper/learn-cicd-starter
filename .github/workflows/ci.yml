@@ -22,6 +22,10 @@ jobs:
       - name: Style
         run: test -z $(go fmt ./...)
       - name: Install staticcheck
-        uses: dominikh/staticcheck-action@v1
-        with:
-          version: latest
+        run: go install honnef.co/go/tools/cmd/staticcheck@latest
+      - name: Add staticcheck to PATH
+        run: echo 'export PATH=$PATH:$GOPATH/bin' >> ~/.bashrc
+      - name: Resource Bash
+        run: source ~/.bashrc
+      - name: Run staticcheck
+        run: staticcheck ./...
